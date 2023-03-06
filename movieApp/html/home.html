@@ -1,0 +1,86 @@
+<div ng-controller="movieController">
+
+    <div id="section_topRated" class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="search-container">
+                    <h1 class="my-5 section-heading text-center">Movies</h1>
+
+                </div>
+                <div class="card col-md-3" ng-repeat="movie in topRatedMovies | filter:searchText">
+                    <img class="card-img-top" ng-src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}"
+                        alt="{{movie.title}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{movie.title}}</h5>
+                        <h4 class="rating">Rating: {{movie.vote_average*10 | number:0}}% </h4>
+                        <p class="card-text">
+                            {{ movie.overview | limitTo: 100 }}
+                            {{movie.overview.length > 100 ? '...' : ''}}
+                        </p>
+                        <a href="movie-details/{{movie.id}}" class="btn btn-outline-dark">Read more</a>
+                        <!--  ng-click="getMovieDetails(movie.id)" -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .card {
+        --bs-card-spacer-y: 1rem;
+        --bs-card-spacer-x: 1rem;
+        --bs-card-title-spacer-y: 0.5rem;
+        --bs-card-title-color: ;
+        --bs-card-subtitle-color: ;
+        --bs-card-border-width: var(--bs-border-width);
+        --bs-card-border-color: var(--bs-border-color-translucent);
+        --bs-card-border-radius: var(--bs-border-radius);
+        --bs-card-box-shadow: ;
+        --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
+        --bs-card-cap-padding-y: 0.5rem;
+        --bs-card-cap-padding-x: 1rem;
+        --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
+        --bs-card-cap-color: ;
+        --bs-card-height: ;
+        --bs-card-color: ;
+        --bs-card-bg: var(--bs-body-bg);
+        --bs-card-img-overlay-padding: 1rem;
+        --bs-card-group-margin: 0.75rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        height: var(--bs-card-height);
+        word-wrap: break-word;
+        background-color: var(--bs-card-bg);
+        background-clip: border-box;
+        border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+        border-radius: var(--bs-card-border-radius);
+        box-shadow: 5px 10px;
+        background: white;
+        text-align: center;
+        padding: 20px 25px;
+        height: 450px;
+        cursor: pointer;
+        -webkit-box-shadow: 0 0px 25px rgb(0 0 0 / 7%);
+        box-shadow: 0 0px 25px rgb(0 0 0 / 7%);
+        border-radius: 20px;
+        border: 5px solid rgba(0, 0, 0, 0.07);
+        margin-bottom: 30px;
+        -webkit-transition: all .5s ease 0;
+        transition: all .5s ease 0;
+        transition: all 0.5s ease 0s;
+    }
+
+    a.btn.btn-outline-dark {
+        border: 1px solid #1d9ed9 !important;
+        background-color: #1d9ed9 !important;
+        color: white !important;
+    }
+
+    a.btn.btn-outline-dark:hover {
+        border: 1px solid black !important;
+        background-color: black !important;
+        color: white !important;
+    }
+</style>
